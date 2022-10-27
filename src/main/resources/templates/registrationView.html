@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<!-- -->
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/}">Registration & login</a>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/registration}">Registration</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div th:if="${param.success}">
+                <div class="alert alert-success">
+                    you are have successfully registered
+                </div>
+            </div>
+            <h3>Registration</h3>
+            <form th:action="@{/registration}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label for="firstName" class="label-control">
+                        First Name
+                    </label>
+                    <input required autofocus th:field="*{firstName}" type="text" id="firstName"
+                           class="form-control">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="lastName" class="label-control">Last name</label>
+                    <input required th:field="*{lastName}" type="text" class="form-control" id="lastName">
+                </div>
+                <div class="form-group mt-2">
+                    <label for="email" class="label-control">Email</label>
+                    <input required th:field="*{email}" type="email" class="form-control" id="email">
+                </div>
+                <div class="from-group mt-2">
+                    <label for="Password" class="label-control">Password</label>
+                    <input type="password" th:field="*{password}" required class="form-control" id="password">
+                </div>
+                <button type="submit" class="btn mt-2 btn-success">Register</button>
+                <span class="float-end">Already registered? <a href="/" th:href="@{/login}">Login here</a> </span>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<footer id="sticky-footer" class="fixed-bottom flex-shrink-0 py-1 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>Copyright &copy; Boufouss mohamed</small>
+    </div>
+</footer>
+</html>
